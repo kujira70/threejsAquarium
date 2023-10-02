@@ -16,9 +16,14 @@ const geometory = new THREE.TorusGeometry( 10, 3, 16, 100 );
 const material = new THREE.MeshBasicMaterial( { color: 0xFF6347, wireframe: true } );
 const torus = new THREE.Mesh( geometory, material );
 
-const tank1geo = new THREE.BoxGeometry(1, 1, 1); // Dimensions of the cube
-const tank1mat = new THREE.MeshBasicMaterial({ color: 0x00ff00 }); // Color of the cube
+const tank1geo = new THREE.BoxGeometry(19, 10, 10); // Dimensions of the cube
+const tank1mat = new THREE.MeshBasicMaterial({
+    color: 0x00ff00,      // Color of the cube
+    transparent: true,    // Enable transparency
+    opacity: 0.5          // Set opacity level (0.5 means 50% transparent)
+});
 const tank1 = new THREE.Mesh(tank1geo, tank1mat);
+
 
 scene.add(torus);
 scene.add(tank1);
@@ -29,6 +34,10 @@ function animate(){
   torus.rotation.x += 0.01;
   torus.rotation.y += 0.001;
   torus.rotation.z += 0.0001;
+  
+  tank1.rotation.x -= 0.01;
+  tank1.rotation.y -= 0.001;
+  tank1.rotation.z -= 0.01;
 
   material.color.r -= 1;
   console.log(material);
