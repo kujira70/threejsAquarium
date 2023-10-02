@@ -1,11 +1,8 @@
 import './style.css'
-
 import * as THREE from 'three';
 
 const scene = new THREE.Scene();
-
 const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
-
 const renderer = new THREE.WebGL1Renderer({
   canvas: document.querySelector('#bg'),
 })
@@ -19,7 +16,12 @@ const geometory = new THREE.TorusGeometry( 10, 3, 16, 100 );
 const material = new THREE.MeshBasicMaterial( { color: 0xFF6347, wireframe: true } );
 const torus = new THREE.Mesh( geometory, material );
 
+const tank1geo = new THREE.BoxGeometry(1, 1, 1); // Dimensions of the cube
+const tank1mat = new THREE.MeshBasicMaterial({ color: 0x00ff00 }); // Color of the cube
+const tank1 = new THREE.Mesh(tank1geo, tank1mat);
+
 scene.add(torus);
+scene.add(tank1);
 
 function animate(){
   requestAnimationFrame( animate );
